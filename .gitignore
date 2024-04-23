@@ -1,0 +1,12 @@
+*train.txt
+*test.txt
+*.pkl
+/venv_new
+/__pycache__
+/.idea
+*.h5
+venv/
+MicTest/
+MicTrain/
+*.tflite
+*.wav
