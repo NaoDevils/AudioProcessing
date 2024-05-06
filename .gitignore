@@ -1,12 +1,4 @@
-*train.txt
-*test.txt
-*.pkl
-/venv_new
+*.npy
 /__pycache__
 /.idea
-*.h5
 venv/
-MicTest/
-MicTrain/
-*.tflite
-*.wav
