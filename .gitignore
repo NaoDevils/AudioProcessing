@@ -2,3 +2,6 @@
 /__pycache__
 /.idea
 venv/
+*.wav
+*.h5
+*.tflite
