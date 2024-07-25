@@ -60,4 +60,4 @@ debug_dataset("Hulk_Lab_Test_02", "Eval")
 ```
 
 ### Room Impulse Response
-The Utils folder contains also a file called room_impulse_response_debug.py, which can be used to analyse the Room Impulse Response (RIR) of a recorded chirp sound (Utils/chirp.wav). As demonstration the recording of this chirp sound in our lab is already included.
+The Utils folder also contains a script called room_impulse_response_debug.py, which can be used to analyse the Room Impulse Response (RIR) of a recorded chirp sound (Utils/chirp.wav). As a demonstration, the recording of this chirping sound in our lab has already been included.
