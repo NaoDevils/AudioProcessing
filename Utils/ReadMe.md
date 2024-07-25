@@ -1,5 +1,5 @@
 # Whistle Annotation
-The Utils folder contains a file called annotateWhistle.py, which can be used to quickly and easily annotate whistle data for training. All you need to do is create at least one folder in the WhistleDetector folder where the WAV files to be annotated are stored. This can be the AnnotationData folder, for example. This folder already contains a very short audio file with just one whistle for demonstration purposes.
+This Utils folder contains a file called annotateWhistle.py, which can be used to quickly and easily annotate whistle data for training. All you need to do is create at least one folder in the WhistleDetector folder where the WAV files to be annotated are stored. This can be the AnnotationData folder, for example. This folder already contains a very short audio file with just one whistle for demonstration purposes.
 
 To annotate a file, only the last line of annotateWhistle.py needs to be adapted. The parameter "dataset" stands for the name of the WAV file to be annotated (without extension) and the parameter "folder" for the folder in which the WAV file is located.
 For example:
@@ -22,7 +22,7 @@ By pressing the l key, you can switch from annotation mode to edit mode. However
 Some whistle-containing audio files that can be annotated with this tool can be found [here](https://tu-dortmund.sciebo.de/s/hDiglhXxhO0JCB6).
 
 # Whistle Direction and Distance Annotation
-The Utils folder contains a file called annotateWhistleDirectionDistance.py, which can be used to quickly and easily annotate whistle distance and direction data for training, test and evaluation. You need only download the corresponding [dataset](https://tu-dortmund.sciebo.de/s/XXrULjGMD53JdqG) and copy the WAV files into the corresponding train, test, or evaluation folder. The demo folder already contains a very short audio file with just one whistle for demonstration purposes only.
+This Utils folder contains a file called annotateWhistleDirectionDistance.py, which can be used to quickly and easily annotate whistle distance and direction data for training, test and evaluation. You need only download the corresponding [dataset](https://tu-dortmund.sciebo.de/s/XXrULjGMD53JdqG) and copy the WAV files into the corresponding train, test, or evaluation folder. The demo folder already contains a very short audio file with just one whistle for demonstration purposes only.
 
 To generate the annotated direction and distance data of the whistles, you need to edit the string in line 1006, which specifies one of the four folders (Train, Test, Eval, and Demo). By default, it contains the string "Demo". After this, you can simply run the script to generate all the files needed for training and testing our neural networks.
 For example:
