@@ -123,7 +123,7 @@ def calculate_whistle_data(dataset = None, folder = FOLDER, model_name = MODEL_N
             elif perv_whistle_label == window_size//4 and whistle_label == 0.0:
                 max_idx = idx - 1
 
-            if active_attention and attention > attention_length and np.abs(max_idx - min_idx) > MIN_WHISTLE_FRAMES and np.abs(max_idx - min_idx) < MAX_WHISTLE_FRAMES:
+            if active_attention and attention > attention_length and np.abs(max_idx - min_idx) + 1 > MIN_WHISTLE_FRAMES and np.abs(max_idx - min_idx) + 1 < MAX_WHISTLE_FRAMES:
                 tmp_whistle_idx_range.append([min_idx, max_idx])
                 attention = 0
                 active_attention = False
