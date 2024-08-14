@@ -15,7 +15,7 @@ read_data_from_txt = False
 # Training Config
 max_epochs = 45
 load_model = False
-model_name = "WhistleNetMk9.h5"
+model_name = "WhistleNetMk16.h5"
 desired_precision = 0.99
 clear_checkpoints = True
 show_model_summary = False
