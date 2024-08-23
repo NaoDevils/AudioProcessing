@@ -1,0 +1,1 @@
+This folder collects data that still needs to be annotated.
