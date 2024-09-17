@@ -26,12 +26,11 @@ MICS = ["rear left", "rear right", "front left", "front right"]
 FOLDER = "AnnotationData"
 MODEL_NAME = "./PreTrainedNetworks/WhistleDetection/WhistleNetMk16.h5"
 WINDOW_SIZE = 1024
-THRESHOLD = 0.65
+THRESHOLD = 0.25
 NEGATIVE_THERSHOLD = 0.01
 ATTENTION_MULTIPLIER = 2.0
 MIN_WHISTLE_FRAMES = 1
-MAX_WHISTLE_FRAMES = np.inf
-MAX_ATTENTION_LENGTH = 3
+MAX_WHISTLE_FRAMES = 50
 
 def calculate_whistle_data(dataset = None, folder = FOLDER, model_name = MODEL_NAME, window_size = WINDOW_SIZE, threshold = THRESHOLD, attention_multiplier = ATTENTION_MULTIPLIER, data = None, samplerate = None):
     global whistle_cluster
@@ -107,9 +106,6 @@ def calculate_whistle_data(dataset = None, folder = FOLDER, model_name = MODEL_N
                 sequence = 0
             last_label = whistle_label
     attention_length = longest_sequence * attention_multiplier
-
-    if MAX_ATTENTION_LENGTH is not None and attention_length > MAX_ATTENTION_LENGTH:
-        attention_length = MAX_ATTENTION_LENGTH
 
     whistle_idx_range = []
     detected_whistles = []
@@ -257,7 +253,7 @@ def save_whistle_label(dataset):
     global whistle_cluster
     global labeled_whistles
     global non_whistle_label
-    global fft_windowed_data
+    global fft_windowed_data_log10
     print("save")
 
     whistle_idx = []
@@ -289,12 +285,12 @@ def save_whistle_label(dataset):
 
     for idx in whistle_idx:
         for channel in range(4):
-            x.append(fft_windowed_data[channel][idx])
+            x.append(fft_windowed_data_log10[channel][idx])
             y.append(1)
     
     for idx in non_whistle_idx:
         for channel in range(4):
-            x.append(fft_windowed_data[channel][idx])
+            x.append(fft_windowed_data_log10[channel][idx])
             y.append(0)
     
     x = np.asarray(x)
