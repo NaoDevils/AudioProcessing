@@ -22,15 +22,20 @@ from matplotlib.widgets import Button
 import matplotlib.style as mplstyle
 mplstyle.use('fast')
 
+abspath = os.path.abspath(__file__)
+dname = os.path.dirname(abspath)
+os.chdir(dname)
+
 MICS = ["rear left", "rear right", "front left", "front right"]
 FOLDER = "AnnotationData"
-MODEL_NAME = "./PreTrainedNetworks/WhistleDetection/WhistleNetMk16.h5"
+MODEL_NAME = "../PreTrainedNetworks/WhistleDetection/WhistleNetMk16.h5"
 WINDOW_SIZE = 1024
-THRESHOLD = 0.25
+THRESHOLD = 0.65
 NEGATIVE_THERSHOLD = 0.01
 ATTENTION_MULTIPLIER = 2.0
 MIN_WHISTLE_FRAMES = 1
-MAX_WHISTLE_FRAMES = 50
+MAX_WHISTLE_FRAMES = np.inf
+MAX_ATTENTION_LENGTH = 3
 
 def calculate_whistle_data(dataset = None, folder = FOLDER, model_name = MODEL_NAME, window_size = WINDOW_SIZE, threshold = THRESHOLD, attention_multiplier = ATTENTION_MULTIPLIER, data = None, samplerate = None):
     global whistle_cluster
@@ -49,7 +54,7 @@ def calculate_whistle_data(dataset = None, folder = FOLDER, model_name = MODEL_N
     if dataset is None or model_name is None:
         return None
     
-    path = f"./WhistleDetector/{folder}/{dataset}.wav"
+    path = f"../WhistleDetector/{folder}/{dataset}.wav"
     if not Path(path).exists():
         print(f"ERROR: No such file: {Path(path).stem}.wav")
         return
@@ -106,6 +111,9 @@ def calculate_whistle_data(dataset = None, folder = FOLDER, model_name = MODEL_N
                 sequence = 0
             last_label = whistle_label
     attention_length = longest_sequence * attention_multiplier
+
+    if MAX_ATTENTION_LENGTH is not None and attention_length > MAX_ATTENTION_LENGTH:
+        attention_length = MAX_ATTENTION_LENGTH
 
     whistle_idx_range = []
     detected_whistles = []
