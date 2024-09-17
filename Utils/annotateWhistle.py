@@ -304,9 +304,9 @@ def save_whistle_label(dataset):
     x = np.asarray(x)
     y = np.asarray(y)
 
-    with open(f"whistle_x_{dataset}.npy", 'wb') as f:
+    with open(f"../whistle_x_{dataset}.npy", 'wb') as f:
         np.save(f, x, allow_pickle=False, fix_imports=True)
-    with open(f"whistle_y_{dataset}.npy", 'wb') as f:
+    with open(f"../whistle_y_{dataset}.npy", 'wb') as f:
         np.save(f, y, allow_pickle=False, fix_imports=True)
     
     print(f"Files: whistle_x_{dataset}.npy and whistle_y_{dataset}.npy saved.")
