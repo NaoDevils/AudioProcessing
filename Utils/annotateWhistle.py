@@ -22,9 +22,13 @@ from matplotlib.widgets import Button
 import matplotlib.style as mplstyle
 mplstyle.use('fast')
 
+abspath = os.path.abspath(__file__)
+dname = os.path.dirname(abspath)
+os.chdir(dname)
+
 MICS = ["rear left", "rear right", "front left", "front right"]
 FOLDER = "AnnotationData"
-MODEL_NAME = "./PreTrainedNetworks/WhistleDetection/WhistleNetMk16.h5"
+MODEL_NAME = "../PreTrainedNetworks/WhistleDetection/WhistleNetMk16.h5"
 WINDOW_SIZE = 1024
 THRESHOLD = 0.65
 NEGATIVE_THERSHOLD = 0.01
@@ -50,7 +54,7 @@ def calculate_whistle_data(dataset = None, folder = FOLDER, model_name = MODEL_N
     if dataset is None or model_name is None:
         return None
     
-    path = f"./WhistleDetector/{folder}/{dataset}.wav"
+    path = f"../WhistleDetector/{folder}/{dataset}.wav"
     if not Path(path).exists():
         print(f"ERROR: No such file: {Path(path).stem}.wav")
         return
@@ -257,7 +261,7 @@ def save_whistle_label(dataset):
     global whistle_cluster
     global labeled_whistles
     global non_whistle_label
-    global fft_windowed_data
+    global fft_windowed_data_log10
     print("save")
 
     whistle_idx = []
@@ -289,20 +293,20 @@ def save_whistle_label(dataset):
 
     for idx in whistle_idx:
         for channel in range(4):
-            x.append(fft_windowed_data[channel][idx])
+            x.append(fft_windowed_data_log10[channel][idx])
             y.append(1)
     
     for idx in non_whistle_idx:
         for channel in range(4):
-            x.append(fft_windowed_data[channel][idx])
+            x.append(fft_windowed_data_log10[channel][idx])
             y.append(0)
     
     x = np.asarray(x)
     y = np.asarray(y)
 
-    with open(f"whistle_x_{dataset}.npy", 'wb') as f:
+    with open(f"../whistle_x_{dataset}.npy", 'wb') as f:
         np.save(f, x, allow_pickle=False, fix_imports=True)
-    with open(f"whistle_y_{dataset}.npy", 'wb') as f:
+    with open(f"../whistle_y_{dataset}.npy", 'wb') as f:
         np.save(f, y, allow_pickle=False, fix_imports=True)
     
     print(f"Files: whistle_x_{dataset}.npy and whistle_y_{dataset}.npy saved.")
