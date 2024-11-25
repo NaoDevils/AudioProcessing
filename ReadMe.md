@@ -3,7 +3,7 @@ Help functions / scripts can be found in the Utils folder. There is also a scrip
 All other scripts or Jupyter notebooks can be found sorted by topic in their respective folders.
 
 # Requirements
-There are several ways to install the dependencies of the Python 3.9 scripts provided here. 
+There are several ways to install the dependencies of the **Python 3.9** scripts provided here. 
 ## Conda
 ### create environment with conda
 conda env create -p ./venv -f conda_env.yml
