@@ -61,3 +61,11 @@ debug_dataset("Hulk_Lab_Test_02", "Eval")
 
 ### Room Impulse Response
 The Utils folder also contains a script called room_impulse_response_debug.py, which can be used to analyse the Room Impulse Response (RIR) of a recorded chirp sound (Utils/chirp.wav). As a demonstration, the recording of this chirping sound in our lab has already been included.
+
+## Attribution
+This project was developed by Diana Kleingarn and Dominik Brämer as part of the Nao Devils robot soccer team.
+
+If you use this code in your own work or publication, we kindly ask you to cite the repository using the **"Cite this repository"** button provided by GitHub (visible at the top of the repository page). This ensures proper attribution and helps others discover the original source.
+
+## License
+This project is licensed under the terms of the [MIT License](./LICENSE).
