@@ -1,0 +1,14 @@
+cff-version: 1.2.0
+title: Nao Devils Audio Processing Tools
+message: If you use this software, please cite it using these metadata.
+type: software
+authors:
+  - family-names: Brämer
+    given-names: Dominik
+  - family-names: Kleingarn
+    given-names: Diana
+repository-code: "https://github.com/NaoDevils/AudioProcessing"
+license-url: "https://https://github.com/NaoDevils/AudioProcessing/blob/main/LICENSE"
+url: "https://naodevils.de"
+version: "2024"
+
